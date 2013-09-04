@@ -1,0 +1,693 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link href="data:text/css,body%20%7B%0A%20%20font%2Dfamily%3A%20Helvetica%2C%20arial%2C%20sans%2Dserif%3B%0A%20%20font%2Dsize%3A%2014px%3B%0A%20%20line%2Dheight%3A%201%2E6%3B%0A%20%20padding%2Dtop%3A%2010px%3B%0A%20%20padding%2Dbottom%3A%2010px%3B%0A%20%20background%2Dcolor%3A%20white%3B%0A%20%20padding%3A%2030px%3B%20%7D%0A%0Abody%20%3E%20%2A%3Afirst%2Dchild%20%7B%0A%20%20margin%2Dtop%3A%200%20%21important%3B%20%7D%0Abody%20%3E%20%2A%3Alast%2Dchild%20%7B%0A%20%20margin%2Dbottom%3A%200%20%21important%3B%20%7D%0A%0Aa%20%7B%0A%20%20color%3A%20%234183C4%3B%20%7D%0Aa%2Eabsent%20%7B%0A%20%20color%3A%20%23cc0000%3B%20%7D%0Aa%2Eanchor%20%7B%0A%20%20display%3A%20block%3B%0A%20%20padding%2Dleft%3A%2030px%3B%0A%20%20margin%2Dleft%3A%20%2D30px%3B%0A%20%20cursor%3A%20pointer%3B%0A%20%20position%3A%20absolute%3B%0A%20%20top%3A%200%3B%0A%20%20left%3A%200%3B%0A%20%20bottom%3A%200%3B%20%7D%0A%0Ah1%2C%20h2%2C%20h3%2C%20h4%2C%20h5%2C%20h6%20%7B%0A%20%20margin%3A%2020px%200%2010px%3B%0A%20%20padding%3A%200%3B%0A%20%20font%2Dweight%3A%20bold%3B%0A%20%20%2Dwebkit%2Dfont%2Dsmoothing%3A%20antialiased%3B%0A%20%20cursor%3A%20text%3B%0A%20%20position%3A%20relative%3B%20%7D%0A%0Ah1%3Ahover%20a%2Eanchor%2C%20h2%3Ahover%20a%2Eanchor%2C%20h3%3Ahover%20a%2Eanchor%2C%20h4%3Ahover%20a%2Eanchor%2C%20h5%3Ahover%20a%2Eanchor%2C%20h6%3Ahover%20a%2Eanchor%20%7B%0A%20%20background%3A%20url%28data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8%2F9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw%2FeHBhY2tldCBiZWdpbj0i77u%2FIiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8%2BIDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI%2FPsQhXeAAAABfSURBVHjaYvz%2F%2Fz8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg%3D%3D%29%20no%2Drepeat%2010px%20center%3B%0A%20%20text%2Ddecoration%3A%20none%3B%20%7D%0A%0Ah1%20tt%2C%20h1%20code%20%7B%0A%20%20font%2Dsize%3A%20inherit%3B%20%7D%0A%0Ah2%20tt%2C%20h2%20code%20%7B%0A%20%20font%2Dsize%3A%20inherit%3B%20%7D%0A%0Ah3%20tt%2C%20h3%20code%20%7B%0A%20%20font%2Dsize%3A%20inherit%3B%20%7D%0A%0Ah4%20tt%2C%20h4%20code%20%7B%0A%20%20font%2Dsize%3A%20inherit%3B%20%7D%0A%0Ah5%20tt%2C%20h5%20code%20%7B%0A%20%20font%2Dsize%3A%20inherit%3B%20%7D%0A%0Ah6%20tt%2C%20h6%20code%20%7B%0A%20%20font%2Dsize%3A%20inherit%3B%20%7D%0A%0Ah1%20%7B%0A%20%20font%2Dsize%3A%2028px%3B%0A%20%20color%3A%20black%3B%20%7D%0A%0Ah2%20%7B%0A%20%20font%2Dsize%3A%2024px%3B%0A%20%20border%2Dbottom%3A%201px%20solid%20%23cccccc%3B%0A%20%20color%3A%20black%3B%20%7D%0A%0Ah3%20%7B%0A%20%20font%2Dsize%3A%2018px%3B%20%7D%0A%0Ah4%20%7B%0A%20%20font%2Dsize%3A%2016px%3B%20%7D%0A%0Ah5%20%7B%0A%20%20font%2Dsize%3A%2014px%3B%20%7D%0A%0Ah6%20%7B%0A%20%20color%3A%20%23777777%3B%0A%20%20font%2Dsize%3A%2014px%3B%20%7D%0A%0Ap%2C%20blockquote%2C%20ul%2C%20ol%2C%20dl%2C%20li%2C%20table%2C%20pre%20%7B%0A%20%20margin%3A%2015px%200%3B%20%7D%0A%0Ahr%20%7B%0A%20%20background%3A%20transparent%20url%28data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw%2FeHBhY2tldCBiZWdpbj0i77u%2FIiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8%2BIDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI%2FPqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC%29%20repeat%2Dx%200%200%3B%0A%20%20border%3A%200%20none%3B%0A%20%20color%3A%20%23cccccc%3B%0A%20%20height%3A%204px%3B%0A%20%20padding%3A%200%3B%20%7D%0A%0Abody%20%3E%20h2%3Afirst%2Dchild%20%7B%0A%20%20margin%2Dtop%3A%200%3B%0A%20%20padding%2Dtop%3A%200%3B%20%7D%0Abody%20%3E%20h1%3Afirst%2Dchild%20%7B%0A%20%20margin%2Dtop%3A%200%3B%0A%20%20padding%2Dtop%3A%200%3B%20%7D%0A%20%20body%20%3E%20h1%3Afirst%2Dchild%20%2B%20h2%20%7B%0A%20%20%20%20margin%2Dtop%3A%200%3B%0A%20%20%20%20padding%2Dtop%3A%200%3B%20%7D%0Abody%20%3E%20h3%3Afirst%2Dchild%2C%20body%20%3E%20h4%3Afirst%2Dchild%2C%20body%20%3E%20h5%3Afirst%2Dchild%2C%20body%20%3E%20h6%3Afirst%2Dchild%20%7B%0A%20%20margin%2Dtop%3A%200%3B%0A%20%20padding%2Dtop%3A%200%3B%20%7D%0A%0Aa%3Afirst%2Dchild%20h1%2C%20a%3Afirst%2Dchild%20h2%2C%20a%3Afirst%2Dchild%20h3%2C%20a%3Afirst%2Dchild%20h4%2C%20a%3Afirst%2Dchild%20h5%2C%20a%3Afirst%2Dchild%20h6%20%7B%0A%20%20margin%2Dtop%3A%200%3B%0A%20%20padding%2Dtop%3A%200%3B%20%7D%0A%0Ah1%20p%2C%20h2%20p%2C%20h3%20p%2C%20h4%20p%2C%20h5%20p%2C%20h6%20p%20%7B%0A%20%20margin%2Dtop%3A%200%3B%20%7D%0A%0Ali%20p%2Efirst%20%7B%0A%20%20display%3A%20inline%2Dblock%3B%20%7D%0A%0Aul%2C%20ol%20%7B%0A%20%20padding%2Dleft%3A%2030px%3B%20%7D%0A%0Aul%20%3Afirst%2Dchild%2C%20ol%20%3Afirst%2Dchild%20%7B%0A%20%20margin%2Dtop%3A%200%3B%20%7D%0A%0Aul%20%3Alast%2Dchild%2C%20ol%20%3Alast%2Dchild%20%7B%0A%20%20margin%2Dbottom%3A%200%3B%20%7D%0A%0Adl%20%7B%0A%20%20padding%3A%200%3B%20%7D%0A%20%20dl%20dt%20%7B%0A%20%20%20%20font%2Dsize%3A%2014px%3B%0A%20%20%20%20font%2Dweight%3A%20bold%3B%0A%20%20%20%20font%2Dstyle%3A%20italic%3B%0A%20%20%20%20padding%3A%200%3B%0A%20%20%20%20margin%3A%2015px%200%205px%3B%20%7D%0A%20%20%20%20dl%20dt%3Afirst%2Dchild%20%7B%0A%20%20%20%20%20%20padding%3A%200%3B%20%7D%0A%20%20%20%20dl%20dt%20%3E%20%3Afirst%2Dchild%20%7B%0A%20%20%20%20%20%20margin%2Dtop%3A%200%3B%20%7D%0A%20%20%20%20dl%20dt%20%3E%20%3Alast%2Dchild%20%7B%0A%20%20%20%20%20%20margin%2Dbottom%3A%200%3B%20%7D%0A%20%20dl%20dd%20%7B%0A%20%20%20%20margin%3A%200%200%2015px%3B%0A%20%20%20%20padding%3A%200%2015px%3B%20%7D%0A%20%20%20%20dl%20dd%20%3E%20%3Afirst%2Dchild%20%7B%0A%20%20%20%20%20%20margin%2Dtop%3A%200%3B%20%7D%0A%20%20%20%20dl%20dd%20%3E%20%3Alast%2Dchild%20%7B%0A%20%20%20%20%20%20margin%2Dbottom%3A%200%3B%20%7D%0A%0Ablockquote%20%7B%0A%20%20border%2Dleft%3A%204px%20solid%20%23dddddd%3B%0A%20%20padding%3A%200%2015px%3B%0A%20%20color%3A%20%23777777%3B%20%7D%0A%20%20blockquote%20%3E%20%3Afirst%2Dchild%20%7B%0A%20%20%20%20margin%2Dtop%3A%200%3B%20%7D%0A%20%20blockquote%20%3E%20%3Alast%2Dchild%20%7B%0A%20%20%20%20margin%2Dbottom%3A%200%3B%20%7D%0A%0Atable%20%7B%0A%20%20padding%3A%200%3B%20%7D%0A%20%20table%20tr%20%7B%0A%20%20%20%20border%2Dtop%3A%201px%20solid%20%23cccccc%3B%0A%20%20%20%20background%2Dcolor%3A%20white%3B%0A%20%20%20%20margin%3A%200%3B%0A%20%20%20%20padding%3A%200%3B%20%7D%0A%20%20%20%20table%20tr%3Anth%2Dchild%282n%29%20%7B%0A%20%20%20%20%20%20background%2Dcolor%3A%20%23f8f8f8%3B%20%7D%0A%20%20%20%20table%20tr%20th%20%7B%0A%20%20%20%20%20%20font%2Dweight%3A%20bold%3B%0A%20%20%20%20%20%20border%3A%201px%20solid%20%23cccccc%3B%0A%20%20%20%20%20%20text%2Dalign%3A%20left%3B%0A%20%20%20%20%20%20margin%3A%200%3B%0A%20%20%20%20%20%20padding%3A%206px%2013px%3B%20%7D%0A%20%20%20%20table%20tr%20td%20%7B%0A%20%20%20%20%20%20border%3A%201px%20solid%20%23cccccc%3B%0A%20%20%20%20%20%20text%2Dalign%3A%20left%3B%0A%20%20%20%20%20%20margin%3A%200%3B%0A%20%20%20%20%20%20padding%3A%206px%2013px%3B%20%7D%0A%20%20%20%20table%20tr%20th%20%3Afirst%2Dchild%2C%20table%20tr%20td%20%3Afirst%2Dchild%20%7B%0A%20%20%20%20%20%20margin%2Dtop%3A%200%3B%20%7D%0A%20%20%20%20table%20tr%20th%20%3Alast%2Dchild%2C%20table%20tr%20td%20%3Alast%2Dchild%20%7B%0A%20%20%20%20%20%20margin%2Dbottom%3A%200%3B%20%7D%0A%0Aimg%20%7B%0A%20%20max%2Dwidth%3A%20100%25%3B%20%7D%0A%0Aspan%2Eframe%20%7B%0A%20%20display%3A%20block%3B%0A%20%20overflow%3A%20hidden%3B%20%7D%0A%20%20span%2Eframe%20%3E%20span%20%7B%0A%20%20%20%20border%3A%201px%20solid%20%23dddddd%3B%0A%20%20%20%20display%3A%20block%3B%0A%20%20%20%20float%3A%20left%3B%0A%20%20%20%20overflow%3A%20hidden%3B%0A%20%20%20%20margin%3A%2013px%200%200%3B%0A%20%20%20%20padding%3A%207px%3B%0A%20%20%20%20width%3A%20auto%3B%20%7D%0A%20%20span%2Eframe%20span%20img%20%7B%0A%20%20%20%20display%3A%20block%3B%0A%20%20%20%20float%3A%20left%3B%20%7D%0A%20%20span%2Eframe%20span%20span%20%7B%0A%20%20%20%20clear%3A%20both%3B%0A%20%20%20%20color%3A%20%23333333%3B%0A%20%20%20%20display%3A%20block%3B%0A%20%20%20%20padding%3A%205px%200%200%3B%20%7D%0Aspan%2Ealign%2Dcenter%20%7B%0A%20%20display%3A%20block%3B%0A%20%20overflow%3A%20hidden%3B%0A%20%20clear%3A%20both%3B%20%7D%0A%20%20span%2Ealign%2Dcenter%20%3E%20span%20%7B%0A%20%20%20%20display%3A%20block%3B%0A%20%20%20%20overflow%3A%20hidden%3B%0A%20%20%20%20margin%3A%2013px%20auto%200%3B%0A%20%20%20%20text%2Dalign%3A%20center%3B%20%7D%0A%20%20span%2Ealign%2Dcenter%20span%20img%20%7B%0A%20%20%20%20margin%3A%200%20auto%3B%0A%20%20%20%20text%2Dalign%3A%20center%3B%20%7D%0Aspan%2Ealign%2Dright%20%7B%0A%20%20display%3A%20block%3B%0A%20%20overflow%3A%20hidden%3B%0A%20%20clear%3A%20both%3B%20%7D%0A%20%20span%2Ealign%2Dright%20%3E%20span%20%7B%0A%20%20%20%20display%3A%20block%3B%0A%20%20%20%20overflow%3A%20hidden%3B%0A%20%20%20%20margin%3A%2013px%200%200%3B%0A%20%20%20%20text%2Dalign%3A%20right%3B%20%7D%0A%20%20span%2Ealign%2Dright%20span%20img%20%7B%0A%20%20%20%20margin%3A%200%3B%0A%20%20%20%20text%2Dalign%3A%20right%3B%20%7D%0Aspan%2Efloat%2Dleft%20%7B%0A%20%20display%3A%20block%3B%0A%20%20margin%2Dright%3A%2013px%3B%0A%20%20overflow%3A%20hidden%3B%0A%20%20float%3A%20left%3B%20%7D%0A%20%20span%2Efloat%2Dleft%20span%20%7B%0A%20%20%20%20margin%3A%2013px%200%200%3B%20%7D%0Aspan%2Efloat%2Dright%20%7B%0A%20%20display%3A%20block%3B%0A%20%20margin%2Dleft%3A%2013px%3B%0A%20%20overflow%3A%20hidden%3B%0A%20%20float%3A%20right%3B%20%7D%0A%20%20span%2Efloat%2Dright%20%3E%20span%20%7B%0A%20%20%20%20display%3A%20block%3B%0A%20%20%20%20overflow%3A%20hidden%3B%0A%20%20%20%20margin%3A%2013px%20auto%200%3B%0A%20%20%20%20text%2Dalign%3A%20right%3B%20%7D%0A%0Acode%2C%20tt%20%7B%0A%20%20margin%3A%200%202px%3B%0A%20%20padding%3A%200%205px%3B%0A%20%20white%2Dspace%3A%20nowrap%3B%0A%20%20border%3A%201px%20solid%20%23eaeaea%3B%0A%20%20background%2Dcolor%3A%20%23f8f8f8%3B%0A%20%20border%2Dradius%3A%203px%3B%20%7D%0A%0Apre%20code%20%7B%0A%20%20margin%3A%200%3B%0A%20%20padding%3A%200%3B%0A%20%20white%2Dspace%3A%20pre%3B%0A%20%20border%3A%20none%3B%0A%20%20background%3A%20transparent%3B%20%7D%0A%0A%2Ehighlight%20pre%20%7B%0A%20%20background%2Dcolor%3A%20%23f8f8f8%3B%0A%20%20border%3A%201px%20solid%20%23cccccc%3B%0A%20%20font%2Dsize%3A%2013px%3B%0A%20%20line%2Dheight%3A%2019px%3B%0A%20%20overflow%3A%20auto%3B%0A%20%20padding%3A%206px%2010px%3B%0A%20%20border%2Dradius%3A%203px%3B%20%7D%0A%0Apre%20%7B%0A%20%20background%2Dcolor%3A%20%23f8f8f8%3B%0A%20%20border%3A%201px%20solid%20%23cccccc%3B%0A%20%20font%2Dsize%3A%2013px%3B%0A%20%20line%2Dheight%3A%2019px%3B%0A%20%20overflow%3A%20auto%3B%0A%20%20padding%3A%206px%2010px%3B%0A%20%20border%2Dradius%3A%203px%3B%20%7D%0A%20%20pre%20code%2C%20pre%20tt%20%7B%0A%20%20%20%20background%2Dcolor%3A%20transparent%3B%0A%20%20%20%20border%3A%20none%3B%20%7D%0A" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="TOC">
+<ul>
+<li><a href="#general-css-notes-advice-and-guidelines">General CSS notes, advice and guidelines</a></li>
+<li><a href="#一般的css注釈勧告ガイドライン">一般的CSS注釈、勧告、ガイドライン</a><ul>
+<li><a href="#contents">Contents</a></li>
+<li><a href="#css-document-anatomy">CSS Document Anatomy</a></li>
+<li><a href="#cssファイルの構成">CSSファイルの構成</a><ul>
+<li><a href="#general">General</a></li>
+<li><a href="#一般">一般</a></li>
+<li><a href="#one-file-vs.-many-files">One file vs. many files</a></li>
+<li><a href="#ひとつのファイル-vs.-複数ファイル">ひとつのファイル vs. 複数ファイル</a></li>
+<li><a href="#table-of-contents">Table of contents</a></li>
+<li><a href="#目次">目次</a></li>
+<li><a href="#section-titles">Section titles</a></li>
+<li><a href="#セクションタイトル">セクションタイトル</a></li>
+</ul></li>
+<li><a href="#source-order">Source order</a></li>
+<li><a href="#ソースファイルの順番">ソースファイルの順番</a></li>
+<li><a href="#anatomy-of-rulesets">Anatomy of rulesets</a></li>
+<li><a href="#ルールセット構成">ルールセット構成</a></li>
+<li><a href="#naming-conventions">Naming conventions</a></li>
+<li><a href="#名前付け方法">名前付け方法</a><ul>
+<li><a href="#classes-in-html">Classes in HTML</a></li>
+<li><a href="#html内のクラス名">HTML内のクラス名</a></li>
+<li><a href="#js-hooks">JS hooks</a></li>
+<li><a href="#js連携">JS連携</a></li>
+<li><a href="#internationalisation">Internationalisation</a></li>
+<li><a href="#国際化">国際化</a></li>
+</ul></li>
+<li><a href="#comments">Comments</a></li>
+<li><a href="#コメント">コメント</a><ul>
+<li><a href="#comments-on-steroids">Comments on steroids</a></li>
+<li><a href="#コメントでcss強化">コメントでCSS強化</a></li>
+</ul></li>
+<li><a href="#writing-css">Writing CSS</a></li>
+<li><a href="#cssの書き方理論">CSSの書き方理論</a></li>
+<li><a href="#building-new-components">Building new components</a></li>
+<li><a href="#新しいコンポーネントの作り方">新しいコンポーネントの作り方</a></li>
+<li><a href="#oocss">OOCSS</a></li>
+<li><a href="#オブジェクト指向css">オブジェクト指向CSS</a></li>
+<li><a href="#layout">Layout</a></li>
+<li><a href="#レイアウト">レイアウト</a></li>
+<li><a href="#sizing-uis">Sizing UIs</a></li>
+<li><a href="#uiのサイズ指定">UIのサイズ指定</a><ul>
+<li><a href="#font-sizing">Font sizing</a></li>
+<li><a href="#フォントサイズ">フォントサイズ</a></li>
+</ul></li>
+<li><a href="#shorthand">Shorthand</a></li>
+<li><a href="#省略記法">省略記法</a></li>
+<li><a href="#ids">IDs</a></li>
+<li><a href="#idについて">IDについて</a></li>
+<li><a href="#selectors">Selectors</a></li>
+<li><a href="#セレクター">セレクター</a><ul>
+<li><a href="#over-qualified-selectors">Over-qualified selectors</a></li>
+<li><a href="#過剰限定セレクター">過剰限定セレクター</a></li>
+<li><a href="#selector-performance">Selector performance</a></li>
+<li><a href="#セレクターのパフォーマンス">セレクターのパフォーマンス</a></li>
+</ul></li>
+<li><a href="#css-selector-intent">CSS selector intent</a></li>
+<li><a href="#cssセレクターの意図">CSSセレクターの意図</a></li>
+<li><a href="#important"><code>!important</code></a></li>
+<li><a href="#magic-numbers-and-absolutes">Magic numbers and absolutes</a></li>
+<li><a href="#マジックナンバーと絶対値">マジックナンバーと絶対値</a></li>
+<li><a href="#conditional-stylesheets">Conditional stylesheets</a></li>
+<li><a href="#条件付きスタイルシート">条件付きスタイルシート</a></li>
+<li><a href="#debugging">Debugging</a></li>
+<li><a href="#デバッグ">デバッグ</a></li>
+<li><a href="#preprocessors">Preprocessors</a></li>
+<li><a href="#プリプロセッサー">プリプロセッサー</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="general-css-notes-advice-and-guidelines"><a href="#general-css-notes-advice-and-guidelines">General CSS notes, advice and guidelines</a></h1>
+<h1 id="一般的css注釈勧告ガイドライン"><a href="#一般的css注釈勧告ガイドライン">一般的CSS注釈、勧告、ガイドライン</a></h1>
+<hr />
+<ul>
+<li><a href="https://github.com/csswizardry/CSS-Guidelines/blob/master/README.md">Original</a></li>
+</ul>
+<hr />
+<p>In working on large, long running projects with dozens of developers, it is important that we all work in a unified way in order to, among other things:</p>
+<p>大きくて長期間に渡るプロジェクトに、多くの開発者が関わって一緒に働く場合、 他の約束事と同様に、以下のような目的のために統一された方法を用いることが重要です。</p>
+<ul>
+<li>Keep stylesheets maintainable</li>
+<li>Keep code transparent and readable</li>
+<li><p>Keep stylesheets scalable</p></li>
+<li>スタイルシートをメンテナンス可能にし続ける</li>
+<li>コードを見通しよく読みやすいように維持する</li>
+<li><p>スタイルシートを拡張可能に保つ</p></li>
+</ul>
+<p>There are a variety of techniques we must employ in order to satisfy these goals.</p>
+<p>これらのゴール達成のためは、いくつかの技術的手法があります。</p>
+<p>The first part of this document will deal with syntax, formatting and CSS anatomy, the second part will deal with approach, mindframe and attitude toward writing and architecting CSS. Exciting, huh?</p>
+<p>この文書では、まず最初に文法やフォーマット、CSSの構成について述べて、 後半ではCSSを書いたり設計するにあたって、考え方や取っ掛かりについて述べます。 どうですか？面白そうでしょう？</p>
+<h2 id="contents"><a href="#contents">Contents</a></h2>
+<ul>
+<li><a href="#css-document-anatomy">CSS document anatomy</a></li>
+<li><a href="#css-document-anatomy">CSSファイルの構成</a></li>
+<li><a href="#general">General</a></li>
+<li><a href="#general">一般</a></li>
+<li><a href="#one-file-vs-many-files">One file vs. many files</a></li>
+<li><a href="#one-file-vs-many-files">ひとつのファイル vs. 複数ファイル</a></li>
+<li><a href="#table-of-contents">Table of contents</a></li>
+<li><a href="#table-of-contents">目次</a></li>
+<li><a href="#section-titles">Section titles</a></li>
+<li><a href="#section-titles">セクションタイトル</a></li>
+<li><a href="#source-order">Source order</a></li>
+<li><a href="#source-order">ソースファイルの順番</a></li>
+<li><a href="#anatomy-of-rulesets">Anatomy of rulesets</a></li>
+<li><a href="#anatomy-of-rulesets">ルールセット構成</a></li>
+<li><a href="#naming-conventions">Naming conventions</a></li>
+<li><a href="#naming-conventions">名前付け方法</a></li>
+<li><a href="#js-hooks">JS hooks</a></li>
+<li><a href="#js-hooks">JS連携</a></li>
+<li><a href="#internationalisation">Internationalisation</a></li>
+<li><a href="#internationalisation">国際化</a></li>
+<li><a href="#comments">Comments</a></li>
+<li><a href="#comments">コメント</a></li>
+<li><a href="#comments-on-steroids">Comments on steroids</a></li>
+<li><a href="#comments-on-steroids">コメントでCSS強化</a>
+<ul>
+<li><a href="#quasi-qualified-selectors">Quasi-qualified selectors</a></li>
+<li><a href="#quasi-qualified-selectors">準限定セレクター</a></li>
+<li><a href="#tagging-code">Tagging code</a></li>
+<li><a href="#tagging-code">コードへのタグ付け</a></li>
+<li><a href="#objectextension-pointers">Object/extension pointers</a></li>
+<li><a href="#objectextension-pointers">相互リンクポインター</a></li>
+</ul></li>
+<li><a href="#writing-css">Writing CSS</a></li>
+<li><a href="#writing-css">CSSの書き方理論</a></li>
+<li><a href="#building-new-components">Building new components</a></li>
+<li><a href="#building-new-components">新しいコンポーネントの作り方</a></li>
+<li><a href="#oocss">OOCSS</a></li>
+<li><a href="#oocss">オブジェクト指向CSS</a></li>
+<li><a href="#layout">Layout</a></li>
+<li><a href="#layout">レイアウト</a></li>
+<li><a href="#sizing-uis">Sizing UIs</a></li>
+<li><a href="#sizing-uis">UIのサイズ指定</a></li>
+<li><a href="#font-sizing">Font sizing</a></li>
+<li><a href="#font-sizing">フォントサイズ</a></li>
+<li><a href="#shorthand">Shorthand</a></li>
+<li><a href="#shorthand">省略記法</a></li>
+<li><a href="#ids">IDs</a></li>
+<li><a href="#ids">IDについて</a></li>
+<li><a href="#selectors">Selectors</a></li>
+<li><a href="#selectors">セレクター</a></li>
+<li><a href="#over-qualified-selectors">Over qualified selectors</a></li>
+<li><a href="#over-qualified-selectors">過剰限定セレクター</a></li>
+<li><a href="#selector-performance">Selector performance</a></li>
+<li><a href="#selector-performance">セレクターのパフォーマンス</a></li>
+<li><a href="#css-selector-intent">CSS selector intent</a></li>
+<li><a href="#css-selector-intent">CSSセレクターの意図</a></li>
+<li><a href="#important"><code>!important</code></a></li>
+<li><a href="#important"><code>!important</code></a></li>
+<li><a href="#magic-numbers-and-absolutes">Magic numbers and absolutes</a></li>
+<li><a href="#magic-numbers-and-absolutes">マジックナンバーと絶対値</a></li>
+<li><a href="#conditional-stylesheets">Conditional stylesheets</a></li>
+<li><a href="#conditional-stylesheets">条件付きスタイルシート</a></li>
+<li><a href="#debugging">Debugging</a></li>
+<li><a href="#debugging">デバッグ</a></li>
+<li><a href="#preprocessors">Preprocessors</a></li>
+<li><a href="#preprocessors">プリプロセッサー</a></li>
+</ul>
+<hr />
+<h2 id="css-document-anatomy"><a href="#css-document-anatomy">CSS Document Anatomy</a></h2>
+<h2 id="cssファイルの構成"><a href="#cssファイルの構成">CSSファイルの構成</a></h2>
+<p>No matter the document, we must always try and keep a common formatting. This means consistent commenting, consistent syntax and consistent naming.</p>
+<p>たとえ文書であっても、私達はいつも共通のフォーマットに合わせる努力を行い、 それを継続し続けるべきです。これは、コメントの一貫性や文法の一貫性、 そして名前付けについて一貫性があることを意味します。</p>
+<h3 id="general"><a href="#general">General</a></h3>
+<h3 id="一般"><a href="#一般">一般</a></h3>
+<p>Limit your stylesheets to a maximum 80 character width where possible. Exceptions may be gradient syntax and URLs in comments. That’s fine, there’s nothing we can do about that.</p>
+<p>スタイルシートのファイルについて、できるだけ横幅80文字以内になるように制限しましょう。 例外としては、グラデーションを指定する文法や、コメント内のURLなどがありますが、これはどうしようも無いのでこのままで構いません。</p>
+<p>I prefer four (4) space indents over tabs and write multi-line CSS.</p>
+<p>私自身は、「タブ文字」よりも「4スペース」によるインデントが好きですし、 マルチラインCSS（CSSの指定を複数行に分ける書き方）を使って書きます。</p>
+<h3 id="one-file-vs.-many-files"><a href="#one-file-vs.-many-files">One file vs. many files</a></h3>
+<h3 id="ひとつのファイル-vs.-複数ファイル"><a href="#ひとつのファイル-vs.-複数ファイル">ひとつのファイル vs. 複数ファイル</a></h3>
+<p>Some people prefer to work with single, large files. This is fine, and by sticking to the following guidelines you’ll encounter no problems. Since moving to Sass I have started sharding my stylesheets out into lots of tiny includes. This too is fine… Whichever method you choose, the following rules and guidelines apply. The only notable difference is with regards our table of contents and our section titles. Read on for further explanation…</p>
+<p>ひとつの大きなファイルにまとめてしまう方法が好きな派閥があります。これから見ていくガイドラインに従う限り、特に問題有りません。 私はSassに移行したため、スタイルシートファイルを小さく分割してインクルードするようになりました。 こちらの方法でも良いです。 どちらを選んだとしても、これから説明するルールやガイドラインは適用できます。 ひとつ大きな違いとしては、目次やセクションタイトルの付け方です。下の説明を読んでみてください。</p>
+<h3 id="table-of-contents"><a href="#table-of-contents">Table of contents</a></h3>
+<h3 id="目次"><a href="#目次">目次</a></h3>
+<p>At the top of stylesheets, I maintain a table of contents which will detail the sections contained in the document, for example:</p>
+<pre><code>/*------------------------------------*\
+    $CONTENTS
+\*------------------------------------*/
+/**
+ * CONTENTS............You’re reading it!
+ * RESET...............Set our reset defaults
+ * FONT-FACE...........Import brand font files
+ */</code></pre>
+<p>スタイルシートの先頭にて、私はスタイルシートの内容の目次を書くようにしています。 例えば以下のようです。</p>
+<pre><code>/*------------------------------------*\
+    $CONTENTS
+\*------------------------------------*/
+/**
+ * CONTENTS............今ここ
+ * RESET...............デフォルトの設定
+ * FONT-FACE...........ブランドフォントの設定
+ */</code></pre>
+<p>This will tell the next developer(s) exactly what they can expect to find in this file. Each item in the table of contents maps directly to a section title.</p>
+<p>目次があれば、このファイルの中に期待しているものがあるかどうかが、別の開発者にも正確に分かります。 目次の各項目は、各セクションのタイトルに対応させます。</p>
+<p>If you are working in one big stylesheet, the corresponding section will also be in that file. If you are working across multiple files then each item in the table of contents will map to an include which pulls that section in.</p>
+<p>もし、ひとつの巨大なスタイルシートで作業を行なっているなら、目次に書いてあるセクションは同じファイルの中にあるでしょう。 もし、あなたが複数のCSSファイルで作業をしているなら、目次の各項目はインクルードする先のファイルの中にあるでしょう。</p>
+<h3 id="section-titles"><a href="#section-titles">Section titles</a></h3>
+<h3 id="セクションタイトル"><a href="#セクションタイトル">セクションタイトル</a></h3>
+<p>The table of contents would be of no use unless it had corresponding section titles. Denote a section thus:</p>
+<pre><code>/*------------------------------------*\
+    $RESET
+\*------------------------------------*/</code></pre>
+<p>目次は対応するセクションタイトルが無ければ何の役にも立ちません。 セクションは以下のように書きます。</p>
+<pre><code>/*------------------------------------*\
+    $RESET
+\*------------------------------------*/</code></pre>
+<p>The <code>$</code> prefixing the name of the section allows us to run a find ([Cmd|Ctrl]+F) for <code>$[SECTION-NAME]</code> and <strong>limit our search scope to section titles only</strong>.</p>
+<p><code>$</code>記号でセクション名を始めることで、<code>$[セクション名]</code>のように検索してセクションタイトルだけを検索対象にすることができます。</p>
+<p>If you are working in one large stylesheet, you leave five (5) carriage returns between each section, thus:</p>
+<pre><code>/*------------------------------------*\
+    $RESET
+\*------------------------------------*/
+[Our
+reset
+styles]
+
+
+
+
+
+/*------------------------------------*\
+    $FONT-FACE
+\*------------------------------------*/</code></pre>
+<p>もし、ひとつのスタイルシートで作業している場合は、セクションの間に空行を５つ入れておきます。 以下例です。</p>
+<pre><code>/*------------------------------------*\
+    $RESET
+\*------------------------------------*/
+[ここに
+リセット
+スタイルを書く]
+
+
+
+
+
+/*------------------------------------*\
+    $FONT-FACE
+\*------------------------------------*/</code></pre>
+<p>This large chunk of whitespace is quickly noticeable when scrolling quickly through larger files.</p>
+<p>この空行の固まりによって、巨大なファイルを素早くスクロールしていても、すぐにセクションの切れ目に気がつくことができます。</p>
+<p>If you are working across multiple, included stylesheets, start each of those files with a section title and there is no need for any carriage returns.</p>
+<p>もし、あなたが複数のスタイルシートで作業している場合は、各ファイルの先頭にセクションタイトルを書くだけで良いです。空行は入れる必要はありません。</p>
+<h2 id="source-order"><a href="#source-order">Source order</a></h2>
+<h2 id="ソースファイルの順番"><a href="#ソースファイルの順番">ソースファイルの順番</a></h2>
+<p>Try and write stylesheets in specificity order. This ensures that you take full advantage of inheritance and CSS’ first <i>C</i>; the cascade.</p>
+<p>スタイルシートを決まった順番で書くようにしましょう。正しい順番で書くことで、継承とカスケードの利点を十分に活かすことができます。ちなみに、「カスケード」はCSSの最初のCを表します。</p>
+<p>A well ordered stylesheet will be ordered something like this:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Reset</strong> – ground zero.</li>
+<li><strong>Elements</strong> – unclassed <code>h1</code>, unclassed <code>ul</code> etc.</li>
+<li><strong>Objects and abstractions</strong> — generic, underlying design patterns.</li>
+<li><strong>Components</strong> – full components constructed from objects and their extensions.</li>
+<li><strong>Style trumps</strong> – error states etc.</li>
+</ol>
+<p>大抵の場合、うまく構成されたスタイルシートの順番は以下のようになっています。</p>
+<ol style="list-style-type: decimal">
+<li><strong>リセット</strong> – 基準地点.</li>
+<li><strong>エレメント（要素）</strong> – クラス名のない <code>h1</code> や <code>ul</code> など.</li>
+<li><strong>オブジェクト、抽象化</strong> — 汎用的、全体的なデザインのパターン.</li>
+<li><strong>コンポーネント</strong> – オブジェクトで構成された部品（コンポーネント）やその拡張など.</li>
+<li><strong>臨時スタイル</strong> – エラー状態など.</li>
+</ol>
+<p>This means that—as you go down the document—each section builds upon and inherits sensibly from the previous one(s). There should be less undoing of styles, less specificity problems and all-round better architected stylesheets.</p>
+<p>これらの詳細は続きで説明します。 ここで重要な点は、各セクションは前に定義された内容を基準にしたり、継承して構築されるということです。 スタイルの破滅をできるだけ避け、低特異性の問題（クラス名の適用範囲が狭くて再利用性に問題がある）も回避して、いろいろな問題に対応できるようなスタイルシートを設計しましょう。</p>
+<p>For further reading I cannot recommend Jonathan Snook’s <a href="http://smacss.com">SMACSS</a> highly enough.</p>
+<p>もっと読みたい人には、Jonathan Snook氏の <a href="http://smacss.com">SMACSS</a> を超お勧めします。</p>
+<h2 id="anatomy-of-rulesets"><a href="#anatomy-of-rulesets">Anatomy of rulesets</a></h2>
+<h2 id="ルールセット構成"><a href="#ルールセット構成">ルールセット構成</a></h2>
+<pre><code>[selector]{
+    [property]:[value];
+    [&lt;- Declaration -&gt;]
+}</code></pre>
+<p>I have a number of standards when structuring rulesets.</p>
+<p>私はルールセットを組み立てるとき、いくつかの標準を使っています。</p>
+<ul>
+<li>Use hyphen delimited class names (except for BEM notation, <a href="#naming-conventions">see below</a>)</li>
+<li>4 space indented</li>
+<li>Multi-line</li>
+<li>Declarations in relevance (NOT alphabetical) order</li>
+<li>Indent vendor prefixed declarations so that their values are aligned</li>
+<li>Indent our rulesets to mirror the DOM</li>
+<li><p>Always include the final semi-colon in a ruleset</p></li>
+<li>クラス名の単語はハイフンで区切る（ただし、BEM記法についてはこの限りではない。<a href="#naming-conventions">※後述</a>）</li>
+<li>4スペースによるインデント</li>
+<li>マルチライン</li>
+<li>適切な宣言順序（アルファベット順ではない）</li>
+<li>ベンダープレフィクスで揃うようにインデント</li>
+<li>DOMの構成と一致するようにルールセットをインデント</li>
+<li><p>セミコロンを必ず付ける</p></li>
+</ul>
+<p>A brief example:</p>
+<p>以下例です。</p>
+<pre><code>.widget{
+    padding:10px;
+    border:1px solid #BADA55;
+    background-color:#C0FFEE;
+    -webkit-border-radius:4px;
+       -moz-border-radius:4px;
+            border-radius:4px;
+}
+    .widget-heading{
+        font-size:1.5rem;
+        line-height:1;
+        font-weight:bold;
+        color:#BADA55;
+        margin-right:-10px;
+        margin-left: -10px;
+        padding:0.25em;
+    }</code></pre>
+<p>Here we can see that <code>.widget-heading</code> must be a child of <code>.widget</code> as we have indented the <code>.widget-heading</code> ruleset one level deeper than <code>.widget</code>. This is useful information to developers that can now be gleaned just by a glance at the indentation of our rulesets.</p>
+<p>ここで、 <code>.widget-heading</code> が <code>.widget</code> の子要素であることを気が付かせるために、<code>.widget-heading</code> のルールセットを <code>.widget</code> よりも深くインデントしています。 これは、開発者にルールセットのインデントをちらっとみるだけで、ルールセット間の関係を分かってもらうのに便利です。</p>
+<p>We can also see that <code>.widget-heading</code>’s declarations are ordered by their relevance; <code>.widget-heading</code> must be a textual element so we begin with our text rules, followed by everything else.</p>
+<p><code>.widget-heading</code>の各CSS宣言がある順番で並んでいることがわかります。 この場合、<code>.widget-heading</code>はテキストがメインの要素なので、まずテキストを 修飾する内容から始めて、続いてその他の要素を並べています。</p>
+<p>One exception to our multi-line rule might be in cases of the following:</p>
+<p>マルチラインのルールの例外は、次のようなものです。</p>
+<pre><code>.t10    { width:10% }
+.t20    { width:20% }
+.t25    { width:25% }       /* 1/4 */
+.t30    { width:30% }
+.t33    { width:33.333% }   /* 1/3 */
+.t40    { width:40% }
+.t50    { width:50% }       /* 1/2 */
+.t60    { width:60% }
+.t66    { width:66.666% }   /* 2/3 */
+.t70    { width:70% }
+.t75    { width:75% }       /* 3/4*/
+.t80    { width:80% }
+.t90    { width:90% }</code></pre>
+<p>In this example (from <a href="https://github.com/csswizardry/inuit.css/blob/master/inuit.css/partials/base/_tables.scss#L88">inuit.css’s table grid system</a>) it makes more sense to single-line our CSS.</p>
+<p>この例の場合(<a href="https://github.com/csswizardry/inuit.css/blob/master/inuit.css/partials/base/_tables.scss#L88">inuit.css’s table grid system</a> から引用)、このように一行にまとめてしまう方がより分かりやすくなります。</p>
+<h2 id="naming-conventions"><a href="#naming-conventions">Naming conventions</a></h2>
+<h2 id="名前付け方法"><a href="#名前付け方法">名前付け方法</a></h2>
+<p>For the most part I simply use hyphen delimited classes (e.g. <code>.foo-bar</code>, not <code>.foo_bar</code> or <code>.fooBar</code>), however in certain circumstances I use BEM (Block, Element, Modifier) notation.</p>
+<p>ほとんどの場合、私はクラス名の単語はハイフンで区切っています。（例：<code>.foo-bar</code>、悪い例：<code>.foo_bar</code>, <code>.fooBar</code>） しかしながら大体の場合において、私はBEM記法を使っています。（BEMは、Block、Element、Modifierの略です）</p>
+<p><abbr title="Block, Element, Modifier">BEM</abbr> is a methodology for naming and classifying CSS selectors in a way to make them a lot more strict, transparent and informative.</p>
+<p><abbr title="Block, Element, Modifier">BEM</abbr>は一種の命名法です。この方法を使うことで、CSSセレクターをより厳密に、見通しよく、また意味のあるものにします。</p>
+<p>The naming convention follows this pattern:</p>
+<p>この命名法のパターンは以下のようです。</p>
+<pre><code>.block{}
+.block__element{}
+.block--modifier{}</code></pre>
+<ul>
+<li><code>.block</code> represents the higher level of an abstraction or component.</li>
+<li><code>.block__element</code> represents a descendent of <code>.block</code> that helps form <code>.block</code> as a whole.</li>
+<li><p><code>.block--modifier</code> represents a different state or version of <code>.block</code>.</p></li>
+<li><code>.block</code> は上位レベルの抽象名やコンポーネント名を表します。</li>
+<li><code>.block__element</code> は <code>.block</code> の要素を全体的に補助するような子要素を表します。</li>
+<li><p><code>.block--modifier</code> は <code>.block</code> 要素自体のある状態や別バージョンを表します。</p></li>
+</ul>
+<p>An <strong>analogy</strong> of how BEM classes work might be:</p>
+<p>BEMクラス名をどのように使うか、ひとつの<strong>参考例</strong>を示します。</p>
+<pre><code>.person{}
+.person--woman{}
+    .person__hand{}
+    .person__hand--left{}
+    .person__hand--right{}</code></pre>
+<p>Here we can see that the basic object we’re describing is a person, and that a different type of person might be a woman. We can also see that people have hands; these are sub-parts of people, and there are different variations, like left and right.</p>
+<p>この例ではまず、person（人）を表す基本的なオブジェクト（抽象的な概念）を定義しています。 このpersonにはwoman（女性）という別のタイプがあります。 さらに、personはhand（手）要素を子要素として持っていて、さらにhand要素にはleft（左）とright（右）という亜種があることが分かります。</p>
+<p>We can now namespace our selectors based on their base objects and we can also communicate what job the selector does; is it a sub-component (<code>__</code>) or a variation (<code>--</code>)?</p>
+<p>この命名方法によって、セレクターは基本的なオブジェクトごとに名前空間を分けることができます。 さらに、子要素なのか(<code>__</code>)、亜種なのか(<code>--</code>)を使い分けることによって、このセレクターがどんな役割を持っているのかについても知ることができます。</p>
+<p>So, <code>.page-wrapper</code> is a standalone selector; it doesn’t form part of an abstraction or a component and as such it named correctly. <code>.widget-heading</code>, however, <em>is</em> related to a component; it is a child of the <code>.widget</code> construct so we would rename this class <code>.widget__heading</code>.</p>
+<p><code>.page-wrapper</code> という独立したセレクター名について考えてみましょう。 このセレクターの名前は抽象要素やコンポーネントの一部ではなく、page wrapper（ページ囲み）という名前を綴ったものですので、これは正しく命名されているといえます。 それでは <code>.widget-heading</code> はどうでしょうか。これは何らかのコンポーネントと関係している（<code>.widget</code>の子要素だと思われます）ので、この場合は <code>.widget__heading</code> と改名するのが適切でしょう。</p>
+<p>BEM looks a little uglier, and is a lot more verbose, but it grants us a lot of power in that we can glean the functions and relationships of elements from their classes alone. Also, BEM syntax will typically compress (gzip) very well as compression favours/works well with repetition.</p>
+<p>BEM法はちょっと見た目が悪くて冗長ではありますが、クラス名だけを見て要素間の関係や機能を知ることが出来るため、大変心強いものです。また、BEM記法は繰り返し同じ単語が頻出しますので、gzipなどの典型的な圧縮とも相性が良いです。</p>
+<p>Regardless of whether you need to use BEM or not, always ensure classes are sensibly named; keep them as short as possible but as long as necessary. Ensure any objects or abstractions are very vaguely named (e.g. <code>.ui-list</code>, <code>.media</code>) to allow for greater reuse. Extensions of objects should be much more explicitly named (e.g. <code>.user-avatar-link</code>). Don’t worry about the amount or length of classes; gzip will compress well written code <em>incredibly</em> well.</p>
+<p>あなたがBEM法を使うかどうかにかかわらず、クラス名はいつでもよく考えて命名するべきです。 具体的には以下のようです。まず、短すぎず、長すぎず、必要最小限の長さにしてください。 つぎに、オブジェクトや抽象名は漠然とさせておいて（例えば <code>.ui-list</code> とか <code>.media</code> とか）、 なるべく広範囲で再利用できるようにしておき、具体的にオブジェクトを拡張する時に、ハッキリした名前付け（例えば <code>.user-avatar-link</code> など）にします。 クラス名の数やそれによるファイルサイズ増加については気にする必要はありません。gzip圧縮が信じられないくらい小さく圧縮してくれます。</p>
+<h3 id="classes-in-html"><a href="#classes-in-html">Classes in HTML</a></h3>
+<h3 id="html内のクラス名"><a href="#html内のクラス名">HTML内のクラス名</a></h3>
+<p>In a bid to make things easier to read, separate classes in your HTML with two (2) spaces, thus:</p>
+<p>ちょっとしたことですが、読みやすくするために、HTML内のクラス名は2スペースあけておきます。 このようです。</p>
+<pre><code>&lt;div class=&quot;foo--bar  bar__baz&quot;&gt;</code></pre>
+<p>This increased whitespace should hopefully allow for easier spotting and reading of multiple classes.</p>
+<p>このようにスペースを増やすことで、複数のクラス名を認識しやすくなったり、読みやすくなることが期待できます。</p>
+<h3 id="js-hooks"><a href="#js-hooks">JS hooks</a></h3>
+<h3 id="js連携"><a href="#js連携">JS連携</a></h3>
+<p><strong>Never use a CSS <em>styling</em> class as a JavaScript hook.</strong> Attaching JS behaviour to a styling class means that we can never have one without the other.</p>
+<p><strong>CSSスタイルで使っているクラス名を、JavaScriptから使うのは絶対にやめましょう!!</strong> JSによる振る舞いの実装にスタイルのクラス名を使い始めると、もう今後そういうこと無しに JSの実装が行えなくなって大変なことになります。</p>
+<p>If you need to bind to some markup use a JS specific CSS class. This is simply a class namespaced with <code>.js-</code>, e.g. <code>.js-toggle</code>, <code>.js-drag-and-drop</code>. This means that we can attach both JS and CSS to classes in our markup but there will never be any troublesome overlap.</p>
+<p>もしJSで使いたいクラス名をマークアップする必要があるなら、JS用と分かるCSSクラス名を使いましょう。 単純に <code>.js-</code> のようなものを付ける方法があります。例えば <code>.js-toggle</code> とか <code>.js-drag-and-drop</code> です。 この場合、JS用とCSS用のクラス名を同時にマークアップしてかまいません。重複して面倒なことになることはありません。</p>
+<pre><code>&lt;th class=&quot;is-sortable  js-is-sortable&quot;&gt;
+&lt;/th&gt;</code></pre>
+<p>The above markup holds two classes; one to which you can attach some styling for sortable table columns and another which allows you to add the sorting functionality.</p>
+<p>上のマークアップ例では、2つのクラスを併記しています。ひとつはソート可能なテーブルのカラムに設定するスタイル名で、もうひとつはソート機能実装用のクラス名です。</p>
+<h3 id="internationalisation"><a href="#internationalisation">Internationalisation</a></h3>
+<h3 id="国際化"><a href="#国際化">国際化</a></h3>
+<p>Despite being a British developer—and spending all my life writing <i>colour</i> instead of <i>color</i>—I feel that, for the sake of consistency, it is better to always use US-English in CSS. CSS, as with most (if not all) other languages, is written in US-English, so to mix syntax like <code>color:red;</code> with classes like <code>.colour-picker{}</code> lacks consistency. I have previously suggested and advocated writing bilingual classes, for example:</p>
+<p>イギリス人開発者（colorではなくcolourと綴ったりすることに時間を費やすような人）であるかわりに、私は一貫性を重視してアメリカ英語（US-English）でCSSを書く方が良いと思っています。 他の言語のコードと同様に、CSSを <code>color:red;</code> のようにアメリカ英語で書いておきながら、 <code>.colour-picker{}</code> のような（イギリス英語）クラス名を混ぜてしまうのは一貫性がありません。 以前、以下のように、バイリンガルなクラス名の書き方をアドバイスしたり提唱したことがありました。</p>
+<pre><code>.color-picker,
+.colour-picker{
+}</code></pre>
+<p>However, having recently worked on a very large Sass project where there were dozens of colour variables (e.g. <code>$brand-color</code>, <code>$highlight-color</code> etc.), maintaining two versions of each variable soon became tiresome. It also means twice as much work with things like find and replace.</p>
+<p>しかし最近になって私は、とても大きなSassを使ったプロジェクトで、大量の「colour」を使った 変数（例えば <code>$brand-color</code> とか <code>$highlight-color</code> など）をメンテナンスするうちに、 これはとても大変なことに気が付きました。それぞれ2回検索したり、置換することになるからです。</p>
+<p>In the interests of consistency, always name classes and variables in the locale of the language you are working with.</p>
+<p>一貫性が重要である場合、いつでもクラス名前や変数は、お使いのロケールに合わせて書くようにしましょう。</p>
+<h2 id="comments"><a href="#comments">Comments</a></h2>
+<h2 id="コメント"><a href="#コメント">コメント</a></h2>
+<p>I use a docBlock-esque commenting style which I limit to 80 characters in length:</p>
+<pre><code>/**
+ * This is a docBlock style comment
+ *
+ * This is a longer description of the comment, describing the code in more
+ * detail. We limit these lines to a maximum of 80 characters in length.
+ *
+ * We can have markup in the comments, and are encouraged to do so:
+ *
+   &lt;div class=foo&gt;
+       &lt;p&gt;Lorem&lt;/p&gt;
+   &lt;/div&gt;
+ *
+ * We do not prefix lines of code with an asterisk as to do so would inhibit
+ * copy and paste.
+ */</code></pre>
+<p>私は、docBlock風のコメントスタイルを、横幅80文字に制限して使っています。 以下のようです。</p>
+<pre><code>/**
+ * これはdocBlock風コメントスタイルです
+ *
+ * ここはとてもながいコメントの記述で、詳細な内容が書いてあります。
+ * 長いですが、横幅を80文字に制限して折り返しています。
+ *
+ * コメントの中でマークアップを書く場合は、以下のように書きます：
+ *
+   &lt;div class=foo&gt;
+       &lt;p&gt;Lorem&lt;/p&gt;
+   &lt;/div&gt;
+ *
+ * コードを書くような場合は、コピペの邪魔にならないように、アスタリ
+ * スクで行を始めないようにしましょう。
+ */</code></pre>
+<p>You should document and comment our code as much as you possibly can, what may seem or feel transparent and self explanatory to you may not be to another dev. Write a chunk of code then write about it.</p>
+<p>皆さん、コメントやドキュメントはできるだけたくさん書きましょう。 あなたにとっては、コメントがなくてもコードの見通しが良く、十分な説明が出来ていると思うようなものであっても、他の開発者にとってはそうでもないかもしれません。 ひとかたまりのコードを書いたなら、都度コメントも書きましょう。</p>
+<h3 id="comments-on-steroids"><a href="#comments-on-steroids">Comments on steroids</a></h3>
+<h3 id="コメントでcss強化"><a href="#コメントでcss強化">コメントでCSS強化</a></h3>
+<p>There are a number of more advanced techniques you can employ with regards comments, namely:</p>
+<p>ここでは、以下の3つの、コメントを使ったいくつかの先進的な技術を紹介します。</p>
+<ul>
+<li>Quasi-qualified selectors</li>
+<li>Tagging code</li>
+<li><p>Object/extension pointers</p></li>
+<li>準限定セレクター</li>
+<li>コードへのタグ付け</li>
+<li><p>相互リンクポインター</p></li>
+</ul>
+<h4 id="quasi-qualified-selectors"><a href="#quasi-qualified-selectors">Quasi-qualified selectors</a></h4>
+<h4 id="準限定セレクター"><a href="#準限定セレクター">準限定セレクター</a></h4>
+<p>You should never qualify your selectors; that is to say, we should never write <code>ul.nav{}</code> if you can just have <code>.nav</code>. Qualifying selectors decreases selector performance, inhibits the potential for reusing a class on a different type of element and it increases the selector’s specificity. These are all things that should be avoided at all costs.</p>
+<p>セレクターを限定すべきではありません。つまり、<code>ul.nav{}</code>のように書くべきではなくて、 単純に <code>.nav</code> と書きます。セレクターを限定することは、セレクターのパフォーマンスを低下させます。 また、限定された要素以外に適用できなくなるため、クラス名の再利用性が低下します。 全くいいことはありませんので、とにかく避けるべきです。</p>
+<p>However, sometimes it is useful to communicate to the next developer(s) where you intend a class to be used. Let’s take <code>.product-page</code> for example; this class sounds as though it would be used on a high-level container, perhaps the <code>html</code> or <code>body</code> element, but with <code>.product-page</code> alone it is impossible to tell.</p>
+<p>しかしながら、すぐとなりの開発者にクラスの意図を伝えるときに、たまに便利な時があります。 例えば <code>.product-page</code> というクラス名について考えましょう。このクラス名は上位に来る 入れ物のような響きがしますので、もしかしたら <code>html</code> や <code>body</code> 要素に使うかもしれません。 でも、 <code>.product-page</code> というクラス名だけではどの要素に使うのかわかりません。</p>
+<p>By quasi-qualifying this selector (i.e. commenting out the leading type selector) we can communicate where we wish to have this class applied, thus:</p>
+<p>そこで、コメントを使って限定セレクターっぽく見せることで、このクラスをどの要素に使って欲しいのかを 別の開発者に教えることができます。以下のようです。</p>
+<pre><code>/*html*/.product-page{}</code></pre>
+<p>We can now see exactly where to apply this class but with none of the specificity or non-reusability drawbacks.</p>
+<p>これで、このクラスをどの要素に使ったらいいかを正確に知ることができます。 しかも、先程説明した詳細化や再利用性の問題もありません。</p>
+<p>Other examples might be:</p>
+<p>他の例をあげてみましょう。</p>
+<pre><code>/*ol*/.breadcrumb{}
+/*p*/.intro{}
+/*ul*/.image-thumbs{}</code></pre>
+<p>Here we can see where we intend each of these classes to be applied without actually ever impacting the specificity of the selectors.</p>
+<p>このように、これらのクラスをどこに使うつもりなのかを、セレクターの動作を変えずに知らせることができます。</p>
+<h4 id="tagging-code"><a href="#tagging-code">Tagging code</a></h4>
+<h4 id="コードへのタグ付け"><a href="#コードへのタグ付け">コードへのタグ付け</a></h4>
+<p>If you write a new component then leave some tags pertaining to its function in a comment above it, for example:</p>
+<p>もし、あなたが新しいコンポーネントを書いたなら、いくつかのタグをコメントに書いておいて、 そのコンポーネントが持つ「機能」について関係付け行なっておきましょう。例えば以下のようです。</p>
+<pre><code>/**
+ * ^navigation ^lists
+ */
+.nav{}
+
+/**
+ * ^grids ^lists ^tables
+ */
+.matrix{}</code></pre>
+<p>These tags allow other developers to find snippets of code by searching for function; if a developer needs to work with lists they can run a find for <code>^lists</code> and find the <code>.nav</code> and <code>.matrix</code> objects (and possibly more).</p>
+<p>これらのタグによって、他の開発者が「機能」で検索した時に、目的のコードへ辿り着くことができます。 つまり、ある開発者がリストする機能について何か探していて、 <code>^lists</code> という単語を検索すると、 <code>.nav</code> や <code>.matrix</code> というクラス名を（もっとたくさん見つかるかもしれませんが） 見つけることが出来るというわけです。</p>
+<h4 id="objectextension-pointers"><a href="#objectextension-pointers">Object/extension pointers</a></h4>
+<h4 id="相互リンクポインター"><a href="#相互リンクポインター">相互リンクポインター</a></h4>
+<p>When working in an object oriented manner you will often have two chunks of CSS (one being the skeleton (the object) and the other being the skin (the extension)) that are very closely related, but that live in very different places. In order to establish a concrete link between the object and its extension with use <i>object/extension pointers</i>. These are simply comments which work thus:</p>
+<p>オブジェクト指向な方法で開発を行なっていると、骨組みとなる基本的な枠組みのCSSと、 それに対するスキンのような拡張部分を分けて書くことが多いと思います。 その場合、基本部分と拡張部分は密接に関係しているのですが、ファイル上では離れた場所に 書かざるを得ないことがよくあります。 この基本部分と拡張部分に、それとよく分かるリンクを張るために、<i>相互リンクポインター</i>を 使うと良いです。これを行うためには、以下のようにコメント文を書きます。</p>
+<p>In your base stylesheet:</p>
+<pre><code>/**
+ * Extend `.foo` in theme.css
+ */
+ .foo{}</code></pre>
+<p>まず、基本部分でこう書きます。</p>
+<pre><code>/**
+ * `.foo` を theme.css で継承すること
+ */
+ .foo{}</code></pre>
+<p>In your theme stylesheet:</p>
+<pre><code>/**
+ * Extends `.foo` in base.css
+ */
+ .bar{}</code></pre>
+<p>次に、テーマのような拡張部分でこう書きます。</p>
+<pre><code>/**
+ * base.css の `.foo` を継承している
+ */
+ .bar{}</code></pre>
+<p>Here we have established a concrete relationship between two very separate pieces of code.</p>
+<p>これで、離れた地点のコードに強固な関係が築けました。</p>
+<hr />
+<h2 id="writing-css"><a href="#writing-css">Writing CSS</a></h2>
+<h2 id="cssの書き方理論"><a href="#cssの書き方理論">CSSの書き方理論</a></h2>
+<p>The previous section dealt with how we structure and form our CSS; they were very quantifiable rules. The next section is a little more theoretical and deals with our attitude and approach.</p>
+<p>これまでのセクションでは、どのようにCSSを構成して記述するかという事について扱いました。 つまり、とても形式的な内容でした。このセクションでは、もうすこし理論的な考え方や 取り組み方について説明します。</p>
+<h2 id="building-new-components"><a href="#building-new-components">Building new components</a></h2>
+<h2 id="新しいコンポーネントの作り方"><a href="#新しいコンポーネントの作り方">新しいコンポーネントの作り方</a></h2>
+<p>When building a new component write markup <strong>before</strong> CSS. This means you can visually see which CSS properties are naturally inherited and thus avoid reapplying redundant styles.</p>
+<p>新しくコンポーネント（部品）を作る場合は、まずCSSよりもマークアップの方から書くようにしましょう。 この方法により、どのCSS属性が継承されていて何を書き加えるべきかを視覚的に確認でき、その結果冗長なCSS属性の定義を避けることができます。</p>
+<p>By writing markup first you can focus on data, content and semantics and then apply only the relevant classes and CSS <em>afterwards</em>.</p>
+<p>マークアップを先に書くことで、表示されるべきデータや内容、またそれらの意味について集中することができます。 そうすれば、そのあとで適切なクラス名やCSSについて考えることができます。</p>
+<h2 id="oocss"><a href="#oocss">OOCSS</a></h2>
+<h2 id="オブジェクト指向css"><a href="#オブジェクト指向css">オブジェクト指向CSS</a></h2>
+<p>I work in an OOCSS manner; I split components into structure (objects) and skin (extensions). As an <strong>analogy</strong> (note, not example) take the following:</p>
+<p>私はオブジェクト指向CSS方式で作業しています。つまり、コンポーネントの枠組みである基本部分と、 拡張部分であるスキンを分けて書いています。現実の例ではないですが、このような雰囲気です。</p>
+<pre><code>.room{}
+
+.room--kitchen{}
+.room--bedroom{}
+.room--bathroom{}</code></pre>
+<p>We have several types of room in a house, but they all share similar traits; they all have floors, ceilings, walls and doors. We can share this information in an abstracted <code>.room{}</code> class. However we have specific types of room that are different from the others; a kitchen might have a tiled floor and a bedroom might have carpets, a bathroom might not have a window but a bedroom most likely will, each room likely has different coloured walls. OOCSS teaches us to abstract the shared styles out into a base object and then <em>extend</em> this information with more specific classes to add the unique treatment(s).</p>
+<p>家にいくつかのタイプの部屋があるとします。それらの部屋は似たような特徴を持ってます。 すなわち、どの部屋にも、床と天井と壁とドアがあります。 そこで、この共通な特徴の情報を、抽象化した <code>.room{}</code> クラスで共有することにします。 しかしながら、それぞれの部屋の詳細については他のものと違います。 キッチンはタイル張りの床で、ベッドルームはカーペットかもしれませんし、 バスルームには窓がなくてもベッドルームにはおそらく窓はあるでしょう。 また、それぞれの部屋の壁の色は多分ちがうでしょう。 オブジェクト指向CSSによると、基本オブジェクトで共通のスタイルを定義し、 具体的なクラスで基本オブジェクトを <em>拡張</em> して、ユニークな特性を定義することになっています。</p>
+<p>So, instead of building dozens of unique components, try and spot repeated design patterns across them all and abstract them out into reusable classes; build these skeletons as base ‘objects’ and then peg classes onto these to extend their styling for more unique circumstances.</p>
+<p>そこで、大量のコンポーネントをバラバラに作る代わりに、コンポーネント間で繰り返し現れるデザインのパターンを 見つけ出して、再利用可能なクラスとして抽象化してみましょう。 つまり、骨組みとなる基本「オブジェクト」を作り、その基本オブジェクトに抽象化したクラスを定義します。 そして、それらのクラスを拡張して、よりユニークな詳細をスタイルとして定義するのです。</p>
+<p>If you have to build a new component split it into structure and skin; build the structure of the component using very generic classes so that we can reuse that construct and then use more specific classes to skin it up and add design treatments.</p>
+<p>もし新しいコンポーネントを作る場面になったら、そのコンポーネントを骨組みとスキンに分けてみましょう。 コンポーネントの骨組みは、構築時に再利用するためにとても汎用的なクラスを使います。 そして、より具体的なクラスでスキンを定義してデザイン要素を埋め込んでいきます。</p>
+<h2 id="layout"><a href="#layout">Layout</a></h2>
+<h2 id="レイアウト"><a href="#レイアウト">レイアウト</a></h2>
+<p>All components you build should be left totally free of widths; they should always remain fluid and their widths should be governed by a parent/grid system.</p>
+<p>コンポーネントを新たに作る場合は、横幅に特に制限を設けるべきではありません。 つまり、フルードレイアウト出来るようにしておいて、コンポーネントを格納する側の 親要素やグリッドシステムが横幅を決められるようにしておきましょう。</p>
+<p>Heights should <strong>never</strong> be be applied to elements. Heights should only be applied to things which had dimensions <em>before</em> they entered the site (i.e. images and sprites). Never ever set heights on <code>p</code>s, <code>ul</code>s, <code>div</code>s, anything. You can often achieve the desired effect with <code>line-height</code> which is far more flexible.</p>
+<p>高さは<strong>絶対に</strong>設定すべきではありません。 高さは、（画像とかスプライトのような）サイトを <em>表示する前から</em> サイズが決まっているものにのみ適用すべきです。 間違っても、<code>p</code> とか <code>ul</code> とか <code>div</code> とか、そういうものに高さを設定してはいけません。 高さを調整したい場合、 <code>line-height</code> を使うことでより柔軟にやりたいことを達成できるはずです。</p>
+<p>Grid systems should be thought of as shelves. They contain content but are not content in themselves. You put up your shelves then fill them with your stuff. By setting up our grids separately to our components you can move components around a lot more easily than if they had dimensions applied to them; this makes our front-ends a lot more adaptable and quick to work with.</p>
+<p>グリッドシステムは棚のようなものだと考えるべきです。 何らかの中身を格納するものであり、グリッドシステム自体が主役にはなりません。 グリッドシステムを設置したら、次はその中に具材を詰めていきましょう。 グリッドとコンポーネントの配置の設定をお互いに独立にさせておくことで、 サイズを固定にしてしまうよりも、コンポーネントをグリッドの中でより自由に動かすことができます。 つまり、前面部のレイアウトを柔軟にして、スムーズにレイアウトが動作するようにしましょう。</p>
+<p>You should never apply any styles to a grid item, they are for layout purposes only. Apply styling to content <em>inside</em> a grid item. Never, under <em>any</em> circumstances, apply box-model properties to a grid item.</p>
+<p>グリッドの各要素に直接スタイルを設定すべきではありません。 先程も書きましたように、グリッドは入れ物であり、それら自身はコンテンツではありません。 スタイルはグリッドの <em>中の</em> 要素に対して適用しましょう。 <em>どんな</em> 状況においても、決して、ボックスモデルの属性をグリッドを構成する要素に適用してはダメです。</p>
+<h2 id="sizing-uis"><a href="#sizing-uis">Sizing UIs</a></h2>
+<h2 id="uiのサイズ指定"><a href="#uiのサイズ指定">UIのサイズ指定</a></h2>
+<p>I use a combination of methods for sizing UIs. Percentages, pixels, ems, rems and nothing at all.</p>
+<p>私はUIのサイズ調整にいくつかの方法を組み合わせています。 パーセント(%)、ピクセル(pixel)、文字幅(em, rem)を使って、他は全く使いません。</p>
+<p>Grid systems should, ideally, be set in percentages. Because I use grid systems to govern widths of columns and pages, I can leave components totally free of any dimensions (as discussed above).</p>
+<p>グリッドシステムは理想的にはパーセントで設定すべきです。 グリッドシステムをカラムの幅やページレイアウトの制御に使うことで、 コンポーネントが自由にサイズを調整する余地を残すことができます。（先程議論しましたね）</p>
+<p>Font sizes I set in rems with a pixel fallback. This gives the accessibility benefits of ems with the confidence of pixels. Here is a handy Sass mixin to work out a rem and pixel fallback for you (assuming you set your base font size in a variable somewhere):</p>
+<p>フォントサイズについてはrem単位を使い、予備としてピクセル指定を併記します。 この方法は、em単位による柔軟性を確保すると同時に、ピクセル指定でバックアップすること(ピクセルフォールバック)で信頼感が得られます。 ここで、Sassを使ってremとピクセルフォールバックを行う例をお見せします。 （この例ではベースフォントサイズ($base-font-size)がどこかで設定されているとします）</p>
+<pre><code>@mixin font-size($font-size){
+    font-size:$font-size +px;
+    font-size:$font-size / $base-font-size +rem;
+}</code></pre>
+<p>I only use pixels for items whose dimensions were defined before the came into the site. This includes things like images and sprites whose dimensions are inherently set absolutely in pixels.</p>
+<p>私は、予めサイズの決まっているのもの定義には、ピクセル単位しか使いません。 画像などの絶対的にピクセルでサイズが決まっているものも、ピクセル指定を使います。</p>
+<h3 id="font-sizing"><a href="#font-sizing">Font sizing</a></h3>
+<h3 id="フォントサイズ"><a href="#フォントサイズ">フォントサイズ</a></h3>
+<p>I define a series of classes akin to a grid system for sizing fonts. These classes can be used to style type in a double stranded heading hierarchy. For a full explanation of how this works please refer to my article <a href="http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css">Pragmatic, practical font-sizing in CSS</a></p>
+<p>私はグリッドシステムにあわせて、文字のサイズに関する一連のクラスを定義します[※1]。 これらのクラスは Double stranded heading hierarchy 方式[※2]で スタイルの適用を行なっています。この方式について詳しくは私の記事<a href="http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css">Pragmatic, practical font-sizing in CSS</a>を参照してください。</p>
+<p>[※1] ：ヘッダー、フッター、サイドバーなどで、それぞれ文字のサイズを調節するという事です。</p>
+<p>[※2] ：論理的な見出し構造と物理的な見出しサイズを、複雑にせずに簡単に設定する方法です。詳細はリンク先を参照してください。</p>
+<h2 id="shorthand"><a href="#shorthand">Shorthand</a></h2>
+<h2 id="省略記法"><a href="#省略記法">省略記法</a></h2>
+<p><strong>Shorthand CSS needs to be used with caution.</strong></p>
+<p><strong>CSSの省略記法は注意して使うべきです。</strong></p>
+<p>It might be tempting to use declarations like <code>background:red;</code> but in doing so what you are actually saying is ‘I want no image to scroll, aligned top-left, repeating X and Y, and a background colour of red’. Nine times out of ten this won’t cause any issues but that one time it does is annoying enough to warrant not using such shorthand. Instead use <code>background-color:red;</code>.</p>
+<p>CSS属性の定義にて、 <code>background:red;</code> のように短く書いてしまう誘惑に駆られますが、 そのように書いてしまうと「私は背景として、画像なしだけど本文と同期スクロールで、 左上配置のX-Y方向のリピートで、背景色は赤でよろしく」と指定したことになります。 10回のうち9回は、それで特に問題はないかもしれませんが、残りの1回で大抵困ったことになり、 もう省略記法なんて使うもんかと腹が立つ事態になるはずです。 きちんと <code>background-color:red;</code> と書くようにしましょう。</p>
+<p>Similarly, declarations like <code>margin:0;</code> are nice and short, but <strong>be explicit</strong>. If you actually only really want to affect the margin on the bottom of an element then it is more appropriate to use <code>margin-bottom:0;</code>.</p>
+<p>同様に、 <code>margin:0;</code> は短くて便利ですが、もっと<strong>明示的に書くべきです</strong>。 実は要素の下の余白だけに設定したかったのであれば、 <code>margin-bottom:0;</code> と書くほうがより適切です。</p>
+<p>Be explicit in which properties you set and take care to not inadvertently unset others with shorthand. E.g. if you only want to remove the bottom margin on an element then there is no sense in setting all margins to zero with <code>margin:0;</code>.</p>
+<p>CSSの属性は明示的に書くようにして、省略記法によって意図せず属性が設定されないように気を付けるべきです。 つまり、要素の下側の余白だけ無くしたいのに、全ての四隅の余白を <code>margin:0;</code> で 無くしてしまうなんてことはナンセンスです。</p>
+<p>Shorthand is good, but easily misused.</p>
+<p>省略記法はいいものですが、簡単に誤用してしまうものです。</p>
+<h2 id="ids"><a href="#ids">IDs</a></h2>
+<h2 id="idについて"><a href="#idについて">IDについて</a></h2>
+<p>A quick note on IDs in CSS before we dive into selectors in general.</p>
+<p>まず、セレクターの一般論に入る前に、CSSのIDについてひとつだけ注意したいことがあります。</p>
+<p><strong>NEVER use IDs in CSS.</strong></p>
+<p><strong>絶対にCSSでIDセレクターは使ってはダメです！</strong></p>
+<p>They can be used in your markup for JS and fragment identifiers but use only classes for styling. You don’t want to see a single ID in any stylesheets!</p>
+<p>JSとの連携のためのマークアップや、要素の特定のためにIDを使うことはできますが、 スタイルの設定にはクラスを使ってください。 みなさんも、一箇所にしか適用しないようなものを、スタイルシートの中で見たくないですよね！</p>
+<p>Classes come with the benefit of being reusable (even if we don’t want to, we can) and they have a nice, low specificity. Specificity is one of the quickest ways to run into difficulties in projects and keeping it low at all times is imperative. An ID is <strong>255</strong> times more specific than a class, so never ever use them in CSS <em>ever</em>.</p>
+<p>クラスには再利用性の利点が常にあり（私たちが望む望まないにかかわらず）、 クラスには優れた低特異性（訳注：いろんな所に適用できる性質）があります。 低特異性はプロジェクトの困難に立ち向かう手っ取り早い方法のひとつであり、 特異性を低く保つことは絶対の義務です。 ひとつのIDは、ひとつのクラスよりも<strong>255</strong>倍も狭い範囲しか特定できないので、 今後とも <em>永遠に</em> CSSの中で使わないようにしてください。</p>
+<h2 id="selectors"><a href="#selectors">Selectors</a></h2>
+<h2 id="セレクター"><a href="#セレクター">セレクター</a></h2>
+<p>Keep selectors short, efficient and portable.</p>
+<p>セレクターは短く、効率的で、可搬性があるように気を使ってください。</p>
+<p>Heavily location-based selectors are bad for a number of reasons. For example, take <code>.sidebar h3 span{}</code>. This selector is too location-based and thus we cannot move that <code>span</code> outside of a <code>h3</code> outside of <code>.sidebar</code> and maintain styling.</p>
+<p>重たい子孫セレクター（location-based selectors）はいくつかの理由から避けるべきものです。 例えば、 <code>.sidebar h3 span{}</code> というセレクターについて考えてみましょう。 このセレクターは子孫の指定が多いので、スタイルを維持したまま <code>span</code> 要素のスタイルを <code>.sidebar</code> の <code>h3</code> の中以外に移動することができません。</p>
+<p>Selectors which are too long also introduce performance issues; the more checks in a selector (e.g. <code>.sidebar h3 span</code> has three checks, <code>.content ul p a</code> has four), the more work the browser has to do.</p>
+<p>長すぎるセレクターは、パフォーマンスの問題も引き起こします。 つまり、セレクターのチェックの数が多くなります（例えば、<code>.sidebar h3 span</code> だと3回、 <code>.content ul p a</code> だと4回のチェックが発生します）ので、ブラウザーに負荷がかかります。</p>
+<p>Make sure styles aren’t dependent on location where possible, and make sure selectors are nice and short.</p>
+<p>スタイルはできるだけ特定の子孫要素に依存しないようにしつつ、短く良いセレクターになるように気を付けましょう。</p>
+<p>Selectors as a whole should be kept short (e.g. one class deep) but the class names themselves should be as long as they need to be. A class of <code>.user-avatar</code> is far nicer than <code>.usr-avt</code>.</p>
+<p>全体的に、セレクターは短くなるように意識するべきですが（例えばクラス階層はひとつにするなど）、 クラス名自体は必要であれば長くても構いません。 <code>.usr-avt</code> よりも <code>.user-avatar</code> の 方がはるかに良いです。</p>
+<p><strong>Remember:</strong> classes are neither semantic or insemantic; they are sensible or insensible! Stop stressing about ‘semantic’ class names and pick something sensible and futureproof.</p>
+<p><strong>覚えておいてください：</strong> クラス名には意味も無意味もありません。機能的かそうでないかが重要です。 クラス名にコンテンツ上の意味を押し付けるのをやめて、機能性や将来性を考えて名前を付けましょう。</p>
+<h3 id="over-qualified-selectors"><a href="#over-qualified-selectors">Over-qualified selectors</a></h3>
+<h3 id="過剰限定セレクター"><a href="#過剰限定セレクター">過剰限定セレクター</a></h3>
+<p>As discussed above, qualified selectors are bad news.</p>
+<p>これまでの議論の通り、限定セレクターにいい話はありません。</p>
+<p>An over-qualified selector is one like <code>div.promo</code>. You could probably get the same effect from just using <code>.promo</code>. Of course sometimes you will <em>want</em> to qualify a class with an element (e.g. if you have a generic <code>.error</code> class that needs to look different when applied to different elements (e.g. <code>.error{ color:red; }</code> <code>div.error{ padding:14px; }</code>)), but generally avoid it where possible.</p>
+<p><code>div.promo</code>のようなものは過剰に限定されたセレクターです。 <code>.promo</code>と書くだけで同じ効果が得られるでしょう。 もちろん、時々意図的に限定されたクラス名を使いたい時があるでしょうが （つまり、<code>.error</code>という汎用的なクラスがあって、特定の要素の時にはもう少し修飾したいというような場合（こんな感じ <code>.error{ color:red; }</code> <code>div.error{ padding:14px; }</code>））、 一般的には避けるべきです。</p>
+<p>Another example of an over-qualified selector might be <code>ul.nav li a{}</code>. As above, we can instantly drop the <code>ul</code> and because we know <code>.nav</code> is a list, we therefore know that any <code>a</code> <em>must</em> be in an <code>li</code>, so we can get <code>ul.nav li a{}</code> down to just <code>.nav a{}</code>.</p>
+<p>別の過剰な限定セレクターの例として、<code>ul.nav li a{}</code> というものがあります。 これも純粋に <code>ul</code> を取り去ることができます。なぜなら、私たちは <code>.nav</code> は リスト要素であることを知っていて、それゆえ <code>a</code> 要素は <em>必ず</em> <code>li</code> の中にある はずですので、最終的に <code>ul.nav li a{}</code> は <code>.nav a{}</code> のように書き直せます。</p>
+<h3 id="selector-performance"><a href="#selector-performance">Selector performance</a></h3>
+<h3 id="セレクターのパフォーマンス"><a href="#セレクターのパフォーマンス">セレクターのパフォーマンス</a></h3>
+<p>Whilst it is true that browsers will only ever keep getting faster at rendering CSS, efficiency is something you could do to keep an eye on. Short, unnested selectors, not using the universal (<code>*{}</code>) selector as the key selector, and avoiding more complex CSS3 selectors should help circumvent these problems.</p>
+<p>ブラウザーが常にCSSのレンダリング速度を向上させているのは事実ですが、 効率はあなたが気を付けることで何とか出来る部分です。 短く、入れ子になっていないセレクターを使いましょう。 ユニバーサルセレクター（<code>*{}</code>）をキーセレクター（※3）として使ってはダメです。 また、CSS3の複雑なセレクターを避けることも問題回避に役立つはずです。</p>
+<p>[※3] セレクターのうち最も右に現れるセレクターをキーセレクタと言います。</p>
+<h2 id="css-selector-intent"><a href="#css-selector-intent">CSS selector intent</a></h2>
+<h2 id="cssセレクターの意図"><a href="#cssセレクターの意図">CSSセレクターの意図</a></h2>
+<p>Instead of using selectors to drill down the DOM to an element, it is often best to put a class on the element you explicitly want to style. Let’s take a specific example with a selector like <code>.header ul{}</code>…</p>
+<p>DOMをたどって特定の要素を指定するようなセレクターを使う代わりに、 スタイルが必要な要素に直接クラスを書く方がしばしば最良の場合があります。 <code>.header ul{}</code> というセレクターの例を考えましょう。</p>
+<p>Let’s imagine that <code>ul</code> is indeed the main navigation for our website. It lives in the header as you might expect and is currently the only <code>ul</code> in there; <code>.header ul{}</code> will work, but it’s not ideal or advisable. It’s not very future proof and certainly not explicit enough. As soon as we add another <code>ul</code> to that header it will adopt the styling of our main nav and the the chances are it won’t want to. This means we either have to refactor a lot of code <em>or</em> undo a lot of styling on subsequent <code>ul</code>s in that <code>.header</code> to remove the effects of the far reaching selector.</p>
+<p>問題の <code>ul</code> 要素は、今私達が考えているWebサイトにとって、メインのナビゲーションであるとしましょう。 <code>ul</code>要素がヘッダーの中にあって、そこに<code>ul</code>要素しか無いのであれば、先ほどのセレクターでもうまく行くでしょう。 しかし、それは理想的で賢明なセレクターであるとはいえません。 将来性がなく、きっとセレクターとして要素をうまく指定できない状況が来るでしょう。 この状況で別の<code>ul</code>要素をヘッダーに加えると、意図せずナビゲーション用のスタイルが適用されてしまいます。 こうなると、大量のコードのリファクタリングを行うか、<code>.header</code>内に追加した<code>ul</code>要素にナビゲーション用の スタイルを打ち消すようなスタイリングを行う必要が出てきます。</p>
+<p>Your selector’s intent must match that of your reason for styling something; ask yourself <strong>‘am I selecting this because it’s a <code>ul</code> inside of <code>.header</code> or because it is my site’s main nav?’</strong>. The answer to this will determine your selector.</p>
+<p>セレクターの意図は、何かをスタイリングするという目的の意図と一致していなければなりません。 つまり、以下のように自問自答してみましょう： <strong>「私はこの要素を<code>.header</code>内の<code>ul</code>だから選択しているのだろうか？ それともWebサイトのメインナビゲーションだからだろうか？」</strong> この質問への答えによって、あなたの書くセレクターが自ずと決まるでしょう。</p>
+<p>Make sure your key selector is never an element/type selector or object/abstraction class. You never really want to see selectors like <code>.sidebar ul{}</code> or <code>.footer .media{}</code> in our theme stylesheets.</p>
+<p>キーセレクターは、要素のタイプを指定したり、抽象オブジェクトのクラスを指定するような ものにならないようにしましょう。 <code>.sidebar ul{}</code> や <code>.footer .media{}</code> のようなセレクターを テーマ用のスタイルシートで、全くもって見たくないわけです。</p>
+<p>Be explicit; target the element you want to affect, not its parent. Never assume that markup won’t change. <strong>Write selectors that target what you want, not what happens to be there already.</strong></p>
+<p>とにかく明示的であるべきです。つまり、効果を及ぼしたい要素に照準を合わせるべきです。 その親要素ではありません。 また、マークアップが変わらないことを仮定するべきではありません。 <strong>現在たまたまそうなっていることを狙うのではなく、必要な要素を狙ってセレクターを書きましょう。</strong></p>
+<p>For a full write up please see my article <a href="http://csswizardry.com/2012/07/shoot-to-kill-css-selector-intent/">Shoot to kill; CSS selector intent</a></p>
+<p>さらにまとまっている私の記事がありますので、ぜひ参照してください。 <a href="http://csswizardry.com/2012/07/shoot-to-kill-css-selector-intent/">Shoot to kill; CSS selector intent</a></p>
+<h2 id="important"><a href="#important"><code>!important</code></a></h2>
+<p>It is okay to use <code>!important</code> on helper classes only. To add <code>!important</code> preemptively is fine, e.g. <code>.error{ color:red!important }</code>, as you know you will <strong>always</strong> want this rule to take precedence.</p>
+<p><code>!important</code>をヘルパー的なクラスに使うのは良いです。 <code>!important</code>をつけたスタイルが優先されることを<strong>常に</strong>自覚しているのなら、 天下り的に<code>!important</code>を付けても悪くありません。例えば <code>.error{ color:red!important }</code> のような ものです。</p>
+<p>Using <code>!important</code> reactively, e.g. to get yourself out of nasty specificity situations, is not advised. Rework your CSS and try to combat these issues by refactoring your selectors. Keeping your selectors short and avoiding IDs will help out here massively.</p>
+<p><code>!important</code> を試行錯誤的に使うこと（つまりCSSがこんがらがっていて、それを何とかしたい時など）は、 勧められません。そのCSSを見なおして、セレクターをリファクタリングすることで、 こんがらがった問題を解決しようとしてください。 セレクターは短くしてIDを避けるとで、この場合ほとんどの問題は解決します。</p>
+<h2 id="magic-numbers-and-absolutes"><a href="#magic-numbers-and-absolutes">Magic numbers and absolutes</a></h2>
+<h2 id="マジックナンバーと絶対値"><a href="#マジックナンバーと絶対値">マジックナンバーと絶対値</a></h2>
+<p>A magic number is a number which is used because ‘it just works’. These are bad because they rarely work for any real reason and are not usually very futureproof or flexible/forgiving. They tend to fix symptoms and not problems.</p>
+<p>マジックナンバーは「丁度それでうまくいく」という理由で使われている数字です。 なぜそれがうまく行くのか本当の理由について分かってないということと、 大抵将来性がないか柔軟性や寛容性がないため、良くないことです。 問題の解決ではなく、対処療法のようなものです。</p>
+<p>For example, using <code>.dropdown-nav li:hover ul{ top:37px; }</code> to move a dropdown to the bottom of the nav on hover is bad, as 37px is a magic number. 37px only works here because in this particular scenario the <code>.dropdown-nav</code> happens to be 37px tall.</p>
+<p>例えば、ナビゲーション要素の下にドロップダウン要素を動かすために、 <code>.dropdown-nav li:hover ul{ top:37px; }</code>という記述を使うことは、 37pxというマジックナンバーが出てくるので良くないです。 この場合、<code>.dropdown-nav</code>の要素が37pxの高さの時だけしか、ちゃんと動きません。</p>
+<p>Instead you should use <code>.dropdown-nav li:hover ul{ top:100%; }</code> which means no matter how tall the <code>.dropdown-nav</code> gets, the dropdown will always sit 100% from the top.</p>
+<p>代わりに、<code>.dropdown-nav li:hover ul{ top:100%; }</code>という記述を使えば、 <code>.dropdown-nav</code>がどんな高さであっても、ドロップダウン要素はナビゲーション要素の 上から高さ100%の位置に表示されます。</p>
+<p>Every time you hard code a number think twice; if you can avoid it by using keywords or ‘aliases’ (i.e. <code>top:100%</code> to mean ‘all the way from the top’) or—even better—no measurements at all then you probably should.</p>
+<p>数値を直接コーディングしようとする場合は、毎回2回はよく考えてください。 つまり、キーワードや別名（例えば<code>top:100%</code>というのは「上から高さ100%の位置」という別名）が 使えないかどうか、全く数値を測定しないでやる方法が無いかどうか考えてください。</p>
+<p>Every hard-coded measurement you set is a commitment you might not necessarily want to keep.</p>
+<p>全てのハードコードされた数値は、必ずしも必要でなかった努力です。</p>
+<h2 id="conditional-stylesheets"><a href="#conditional-stylesheets">Conditional stylesheets</a></h2>
+<h2 id="条件付きスタイルシート"><a href="#条件付きスタイルシート">条件付きスタイルシート</a></h2>
+<p>IE stylesheets can, by and large, be totally avoided. The only time an IE stylesheet may be required is to circumvent blatant lack of support (e.g. PNG fixes).</p>
+<p>IE用のスタイルシートは、おおむね全体的に避けることができます。 IE用のスタイルシートが必要とされるのは、露骨な機能不足を避けるためだけです（PNG透過修正とか）。</p>
+<p>As a general rule, all layout and box-model rules can and <em>will</em> work without an IE stylesheet if you refactor and rework your CSS. This means you never want to see <code>&lt;!--[if IE 7]&gt; element{ margin-left:-9px; } &lt; ![endif]--&gt;</code> or other such CSS that is clearly using arbitrary styling to just ‘make stuff work’.</p>
+<p>一般的に、IE用スタイルシートが無くても、全てのレイアウトルールやボックスモデルは CSSを見なおして修正するだけで動きます。これはつまり <code>&lt;!--[if IE 7]&gt; element{ margin-left:-9px; } &lt; ![endif]--&gt;</code> というものや、単に「動くようにする」ためだけのいろいろなスタイリングを見なくて済むということを意味します。</p>
+<h2 id="debugging"><a href="#debugging">Debugging</a></h2>
+<h2 id="デバッグ"><a href="#デバッグ">デバッグ</a></h2>
+<p>If you run into a CSS problem <strong>take code away before you start adding more</strong> in a bid to fix it. The problem exists in CSS that is already written, more CSS isn’t the right answer!</p>
+<p>もしCSSで問題にぶち当たったのなら、その問題を修正しようとして<strong>何か追加したりする前に、コードを削除しましょう</strong>。 すでに書かれたCSSに問題があるのであれば、そのCSSに何かを追加することは正しい解決策ではありません。</p>
+<p>Delete chunks of markup and CSS until your problem goes away, then you can determine which part of the code the problem lies in.</p>
+<p>問題が無くなるまでマークアップやCSSを削除することで、 どのコードに問題があるのかを特定できます。</p>
+<p>It can be tempting to put an <code>overflow:hidden;</code> on something to hide the effects of a layout quirk, but overflow was probably never the problem; <strong>fix the problem, not its symptoms.</strong></p>
+<p>変なレイアウトの動きを隠すために、どこかに<code>overflow:hidden;</code>を入れてしまおうという誘惑に 駆られるかもしれませんが、大抵の場合overflowは問題ではありません。 つまり、<strong>症状を改善するのではなくて、きちんと問題を解決しましょう。</strong></p>
+<h2 id="preprocessors"><a href="#preprocessors">Preprocessors</a></h2>
+<h2 id="プリプロセッサー"><a href="#プリプロセッサー">プリプロセッサー</a></h2>
+<p>Sass is my preprocessor of choice. <strong>Use it wisely.</strong> Use Sass to make your CSS more powerful but avoid nesting like the plague! Nest only when it would actually be necessary in vanilla CSS, e.g.</p>
+<p>私はプリプロセッサーとしてSassを使っています。 <strong>プリプロセッサーは賢く使いましょう。</strong> Sassは、CSSをよりパワフルに書くために使うのであって、ネストを伝染させる（子孫セレクターを濫用する）のは避けましょう！ ネストしていいのは、プリプロセッサーを使わずにCSSを書く場合でも問題ない場合のみです。つまり、</p>
+<pre><code>.header{}
+.header .site-nav{}
+.header .site-nav li{}
+.header .site-nav li a{}</code></pre>
+<p>Would be wholly unnecessary in normal CSS, so the following would be <strong>bad</strong> Sass:</p>
+<p>このような書き方は、これまでの議論から、通常のCSSとしては全く必要ないものですので、 Sassで以下のように書くのは<strong>ダメ</strong>です。</p>
+<pre><code>.header{
+    .site-nav{
+        li{
+            a{}
+        }
+    }
+}</code></pre>
+<p>If you were to Sass this up you’d write it as:</p>
+<p>もし、Sassでこの例を書くのであれば、以下のようにします。</p>
+<pre><code>.header{}
+.site-nav{
+    li{}
+    a{}
+}</code></pre>
+</body>
+</html>
