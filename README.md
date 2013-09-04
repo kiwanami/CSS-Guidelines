@@ -1,5 +1,5 @@
 # General CSS notes, advice and guidelines
-# 一般的CSS注釈、勧告、ガイドライン
+# 一般 CSS 注釈、アドバイス、ガイドライン
 
 ---
 
@@ -31,7 +31,7 @@ anatomy, the second part will deal with approach, mindframe and attitude toward
 writing and architecting CSS. Exciting, huh?
 
 この文書では、まず最初に文法やフォーマット、CSSの構成について述べて、
-後半ではCSSを書いたり設計するにあたって、考え方や取っ掛かりについて述べます。
+後半ではCSSを書いたり設計するにあたって、考え方や取り組み方について述べます。
 どうですか？面白そうでしょう？
 
 ## Contents
