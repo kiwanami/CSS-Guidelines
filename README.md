@@ -415,7 +415,7 @@ The naming convention follows this pattern:
 
 An **analogy** of how BEM classes work might be:
 
-BEMクラス名をどのように使うか、ひとつの**参考例**を示します。
+BEMクラス名をどのように使うか、ひとつの **参考例** を示します。
 
     .person{}
     .person--woman{}
@@ -836,7 +836,7 @@ images and sprites). Never ever set heights on `p`s, `ul`s, `div`s, anything.
 You can often achieve the desired effect with `line-height` which is far more
 flexible.
 
-高さは**絶対に**設定すべきではありません。
+高さは **絶対に** 設定すべきではありません。
 高さは、（画像とかスプライトのような）サイトを _表示する前から_ サイズが決まっているものにのみ適用すべきです。
 間違っても、`p` とか `ul` とか `div` とか、そういうものに高さを設定してはいけません。
 高さを調整したい場合、 `line-height` を使うことでより柔軟にやりたいことを達成できるはずです。
@@ -942,7 +942,7 @@ Similarly, declarations like `margin:0;` are nice and short, but
 **be explicit**. If you actually only really want to affect the margin on
 the bottom of an element then it is more appropriate to use `margin-bottom:0;`.
 
-同様に、 `margin:0;` は短くて便利ですが、もっと**明示的に書くべきです**。
+同様に、 `margin:0;` は短くて便利ですが、もっと **明示的に書くべきです** 。
 実は要素の下の余白だけに設定したかったのであれば、 `margin-bottom:0;` と書くほうがより適切です。
 
 Be explicit in which properties you set and take care to not inadvertently unset
@@ -985,7 +985,7 @@ them in CSS _ever_.
 クラスには優れた低特異性（訳注：いろんな所に適用できる性質）があります。
 低特異性はプロジェクトの困難に立ち向かう手っ取り早い方法のひとつであり、
 特異性を低く保つことは絶対の義務です。
-ひとつのIDは、ひとつのクラスよりも**255**倍も狭い範囲しか特定できないので、
+ひとつのIDは、ひとつのクラスよりも **255** 倍も狭い範囲しか特定できないので、
 今後とも _永遠に_ CSSの中で使わないようにしてください。
 
 ## Selectors
@@ -1146,7 +1146,7 @@ preemptively is fine, e.g. `.error{ color:red!important }`, as you know you will
 **always** want this rule to take precedence.
 
 `!important`をヘルパー的なクラスに使うのは良いです。
-`!important`をつけたスタイルが優先されることを**常に**自覚しているのなら、
+`!important`をつけたスタイルが優先されることを **常に** 自覚しているのなら、
 天下り的に`!important`を付けても悪くありません。例えば `.error{ color:red!important }` のような
 ものです。
 
@@ -1228,7 +1228,7 @@ If you run into a CSS problem **take code away before you start adding more** in
 a bid to fix it. The problem exists in CSS that is already written, more CSS
 isn’t the right answer!
 
-もしCSSで問題にぶち当たったのなら、その問題を修正しようとして**何か追加したりする前に、コードを削除しましょう**。
+もしCSSで問題にぶち当たったのなら、その問題を修正しようとして **何か追加したりする前に、コードを削除しましょう** 。
 すでに書かれたCSSに問題があるのであれば、そのCSSに何かを追加することは正しい解決策ではありません。
 
 Delete chunks of markup and CSS until your problem goes away, then you can
@@ -1243,7 +1243,7 @@ problem, not its symptoms.**
 
 変なレイアウトの動きを隠すために、どこかに`overflow:hidden;`を入れてしまおうという誘惑に
 駆られるかもしれませんが、大抵の場合overflowは問題ではありません。
-つまり、**症状を改善するのではなくて、きちんと問題を解決しましょう。**
+つまり、 **症状を改善するのではなくて、きちんと問題を解決しましょう。**
 
 ## Preprocessors
 ## プリプロセッサー
@@ -1266,7 +1266,7 @@ Would be wholly unnecessary in normal CSS, so the following would be **bad**
 Sass:
 
 このような書き方は、これまでの議論から、通常のCSSとしては全く必要ないものですので、
-Sassで以下のように書くのは**ダメ**です。
+Sassで以下のように書くのは **ダメ** です。
 
     .header{
         .site-nav{
