@@ -210,7 +210,7 @@
     .t80    { width:80% }
     .t90    { width:90% }
 
-この例の場合([inuit.css’s table grid system](https://github.com/csswizardry/inuit.css/blob/master/inuit.css/partials/base/_tables.scss#L88) から引用)、このように一行にまとめてしまう方がより分かりやすくなります。
+この例の場合([inuit.css’s table grid system](https://github.com/csswizardry/inuit.css/blob/master/base/_tables.scss#L96) から引用)、このように一行にまとめてしまう方がより分かりやすくなります。
 
 ## 名前付け方法
 
