@@ -4,6 +4,8 @@
 ---
 
 * [Original](https://github.com/csswizardry/CSS-Guidelines/blob/master/README.md)
+* オリジナルは第2版が出ています。 http://cssguidelin.es/
+* 日本語のみの文書は[こちら](https://github.com/kiwanami/CSS-Guidelines/blob/master/README.ja.md)
 
 ---
 
